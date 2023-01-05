@@ -1,0 +1,40 @@
+{
+  "name": "common_mjs",
+  "version": "1.7.1",
+  "description": "Ambrogio common mjs classes",
+  "main": "index.mjs",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ambrogio-dev/common-mjs.git"
+  },
+  "author": "Ambrogio S.r.l.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ambrogio-dev/common-mjs/issues"
+  },
+  "homepage": "https://github.com/ambrogio-dev/common-mjs#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "crypto": "^1.0.1",
+    "express": "^4.18.2",
+    "jimp": "^0.16.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mime-types": "^2.1.35",
+    "moment": "^2.29.4",
+    "mongodb": "^4.11.0",
+    "nodemailer": "^6.8.0",
+    "pg": "^8.8.0",
+    "sparkpost": "^2.1.4",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4"
+  }
+}
