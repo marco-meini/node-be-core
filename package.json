@@ -1,6 +1,6 @@
 {
   "name": "common_mjs",
-  "version": "1.7.1",
+  "version": "1.0.0",
   "description": "Ambrogio common mjs classes",
   "main": "index.mjs",
   "directories": {
