@@ -69,7 +69,7 @@ class SessionMiddleware {
           request.session = await this.sessionManager.getSession(token);
           next();
         } else {
-          response.setHeader("WWW-Authenticate", 'Bearer realm="youneed"');
+          response.setHeader("WWW-Authenticate", 'Bearer realm="pania"');
           response.sendStatus(HttpResponseStatus.NOT_AUTHENTICATED);
         }
       } catch (e) {
