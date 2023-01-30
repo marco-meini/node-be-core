@@ -9,6 +9,6 @@ describe("SendGrid", () => {
   it("send en email", async () => {
     let testFilePath = path.join(Files.appRoot(), "spec/files/test_file.pdf");
     let attachment = sg.fileToAttachmentItem(testFilePath);
-    await sg.send({ from: "marco.meini@proton.me", to: "m.meini@ambrogio.com", html: "<b>Test</b>", subject: "SendGrid second test email", attachments: [attachment] });
+    await sg.send({ from: "support@marcomeini.it", to: "m.meini@ambrogio.com", html: "<b>Test</b>", subject: "SendGrid second test email", attachments: [attachment] });
   });
 });
