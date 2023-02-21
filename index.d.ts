@@ -10,6 +10,7 @@ export * from "./lib/session-manager.mjs";
 export * from "./lib/stored-logger.mjs";
 export * from "./lib/strings.mjs";
 export * from "./lib/utils.mjs";
+export * from "./lib/validator.mjs";
 export * from "./model/abstract-base-collection.mjs";
 export * from "./model/abstract-pg-model.mjs";
 
