@@ -1,6 +1,6 @@
 {
   "name": "common_mjs",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Ambrogio common mjs classes",
   "main": "index.mjs",
   "directories": {
@@ -29,7 +29,7 @@
     "lodash": "^4.17.21",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
-    "mongodb": "^4.11.0",
+    "mongodb": "^5.0.1",
     "nodemailer": "^6.8.0",
     "pg": "^8.8.0",
     "sparkpost": "^2.1.4",
