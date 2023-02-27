@@ -3,7 +3,7 @@ import { PgClientManager } from "../lib/pg-client-manager.mjs";
 class Abstract_PgModel {
   /**
    * @type {PgClientManager}
-   * @private
+   * @protected
    */
   __connection;
 
