@@ -202,6 +202,23 @@ class Abstract_BaseCollection {
 
   /**
    *
+   * @param {mongodb.Filter<any>} filters
+   * @param {{ [key: string]: any }} data
+   * @returns {Promise<number>}
+   */
+  async updateMany(filters = {}, data = {}) {
+    try {
+      let result = await this.__collection.updateMany(filters, {
+        $set: data
+      });
+      return Promise.resolve(result.modifiedCount);
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }
+
+  /**
+   *
    * @param {mongodb.Filter<any>} filter
    * @returns {Promise<void>}
    */
