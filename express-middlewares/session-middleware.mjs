@@ -8,6 +8,14 @@ import { SessionManager } from "../lib/session-manager.mjs";
  * } & import("express").Request} SessionRequest
  */
 
+/**
+ * @typedef {{
+ * cookie?: { name: string },
+ * header?: { name: string },
+ * expiration: number
+ * }} IOptions
+ */
+
 class SessionMiddleware {
   /**
    * @type {SessionManager}
@@ -17,14 +25,19 @@ class SessionMiddleware {
   /** @type {string} */
   sessionHeaderName;
 
+  /** @type {string} */
+  cookieName;
+
+  /** @type {IOptions} */
+  options;
+
   /**
    *
-   * @param {string} sessionHeaderName
-   * @param {number} sessionExpiration
+   * @param {IOptions} options
    * @param {MongoClienManager} mongoClient
    */
-  constructor(sessionHeaderName, sessionExpiration, mongoClient) {
-    this.sessionHeaderName = sessionHeaderName;
+  constructor(options, mongoClient) {
+    this.options = options;
     this.sessionManager = new SessionManager(sessionExpiration, mongoClient);
   }
 
@@ -34,10 +47,15 @@ class SessionMiddleware {
    * @returns
    */
   getToken(request) {
-    let header = request.header(this.sessionHeaderName);
-    if (header.startsWith("Bearer")) {
-      let headerSplit = header.split(" ");
-      return headerSplit.length > 1 ? headerSplit[1] : "";
+    if (this.options.cookie) {
+      return request.cookies[this.options.cookie.name];
+    }
+    if (this.options.header) {
+      let header = request.header[this.options.header.name];
+      if (header.startsWith("Bearer")) {
+        let headerSplit = header.split(" ");
+        return headerSplit.length > 1 ? headerSplit[1] : "";
+      }
     }
     return "";
   }
@@ -49,7 +67,17 @@ class SessionMiddleware {
    * @param {string} newToken
    */
   updateResponseToken(request, response, newToken) {
-    response.setHeader(this.sessionHeaderName, newToken);
+    if (this.options.cookie) {
+      response.cookie(this.options.cookie.name, newToken, {
+        httpOnly: true,
+        sameSite: true,
+        expires: moment().add(this.options.expiration, "seconds").toDate(),
+        secure: true
+      });
+    }
+    if (this.options.header) {
+      response.setHeader(this.options.header.name, newToken);
+    }
   }
 
   /**
