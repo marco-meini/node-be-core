@@ -38,7 +38,7 @@ class SessionMiddleware {
    */
   constructor(options, mongoClient) {
     this.options = options;
-    this.sessionManager = new SessionManager(sessionExpiration, mongoClient);
+    this.sessionManager = new SessionManager(options.expiration, mongoClient);
   }
 
   /**
