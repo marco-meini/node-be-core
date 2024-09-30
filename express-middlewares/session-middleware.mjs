@@ -11,8 +11,7 @@ import { SessionManager } from "../lib/session-manager.mjs";
 /**
  * @typedef {{
  * cookie?: { name: string },
- * header?: { name: string },
- * expiration: number
+ * header?: { name: string }
  * }} IOptions
  */
 
@@ -34,11 +33,11 @@ class SessionMiddleware {
   /**
    *
    * @param {IOptions} options
-   * @param {MongoClienManager} mongoClient
+   * @param {SessionManager} mongoClient
    */
-  constructor(options, mongoClient) {
+  constructor(options, sessionManager) {
     this.options = options;
-    this.sessionManager = new SessionManager(options.expiration, mongoClient);
+    this.sessionManager = sessionManager;
   }
 
   /**
